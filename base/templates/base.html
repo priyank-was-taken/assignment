@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload and Preview</title>
+    <link rel="stylesheet" href={% static "index.css" %}>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    {% comment %} {% include 'sidebar.html' %}  {% endcomment %}
+
+    <nav class="sidebar">
+        <ul>
+            <li><a href="/" class="{% block activeblockindex %} {% endblock activeblockindex%}">File Upload</a></li>
+            <li><a href="/list/" class= "{% block activeblocklistpage %} {% endblock activeblocklistpage%}">View Files</a></li>
+        </ul>
+    </nav>
+    {% block content %}
+    
+    {% endblock content %}
+
+    
+    {% if request.user %}
+    <a href="{% url "logout" %}" class="button-link">logout</a>
+    
+    {% endif %}
+    <script src={% static "index.js" %}></script>
+</body>
+</html>

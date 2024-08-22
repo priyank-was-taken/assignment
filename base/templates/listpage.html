@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block activeblocklistpage %} active {% endblock activeblocklistpage%}
+{% block content %}
+{% load static %}
+        <div class="container" >
+            <header class="header">
+                <h1>Item List</h1>
+            </header>
+            <main class="main-content">
+                <ul class="item-list">
+                    {% for item in items %}
+                        <div >
+                        <li class="item-card" style="display:flex;">
+                            <a style="flex-grow:2; padding:7px">{{ item.file.name}}</a>
+                            <div class="image-container">
+                                <a  download="{{ item.file.name }}" href="{{ item.file.url }}" >
+                                    <img class='image' src="{% static "logo/download.png" %}" />
+                                </a>
+                                <div>{{urls}}</div>
+                                <a  href="{{ item.file.url}}" target="_blank" >
+                                {% comment %} <a href="https://docs.google.com/gview?url={{ item.absolute_url }}&embedded=true" target="_blank"> {% endcomment %}
+                                    <img class='image' src="{% static "logo/witness.png" %}"  />
+                                </a>
+                                <a href="/delete/?id={{item.id}}"><img class='image' src="{% static "logo/delete.png" %}"/></a>
+                            </div>
+                        </li>
+                        </div>
+                        
+                    {% empty %}
+                        <p>No items available.</p>
+                    {% endfor %}
+                </ul>
+            </main>
+        </div>
+    </div>
+
+    {% endblock content %}

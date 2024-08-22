@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block activeblockindex %} active {% endblock activeblockindex%}
+{% block content %}
+
+
+        <div class="content">
+            <div class="upload-container" id="uploder">
+                <h2>Upload Your File</h2>
+                <form class="upload-area" action='/' method='POST' enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" id="fileInput" class="file-input" name='file'>
+                    <label for="fileInput" class="upload-label">Choose a file</label>
+                    <button type='submit'>submit</button>
+                </form>
+                {% comment %} <div id="filePreview" class="file-preview"></div> {% endcomment %}
+                <p>{{error}}</p>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}    
